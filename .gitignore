@@ -11,3 +11,6 @@ target/*
 .DS_Store
 *.iws
 *.ipr
+
+gradlew
+gradlew.bat
