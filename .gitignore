@@ -8,3 +8,5 @@ build
 *.iml
 target/*
 .DS_Store
+*.iws
+*.ipr
