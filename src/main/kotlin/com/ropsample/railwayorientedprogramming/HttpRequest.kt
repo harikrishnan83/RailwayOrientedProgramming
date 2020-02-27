@@ -16,13 +16,12 @@ infix fun <T> Result<T>.error(f: (String) -> Result<T>) =
         if (this is Failure) f(this.errorMessage) else this
 
 class HttpRequest(private val url: String, private val method: HttpMethod, private val body: String) {
-    fun matches(anotherRequest: HttpRequest): Any {
-        return (anotherRequest pipeTo
-                        (this::matchUrl) then
-                        (this::matchMethod) then
-                        (this::matchBody) error
-                        (this::handleError))
-    }
+    fun matches(anotherRequest: HttpRequest) =
+            anotherRequest pipeTo
+                    ::matchUrl then
+                    ::matchMethod then
+                    ::matchBody error
+                    ::handleError
 
     private fun matchUrl(anotherRequest: HttpRequest): Result<HttpRequest> {
         if (this.url != anotherRequest.url)
@@ -53,6 +52,7 @@ sealed class HttpMethod {
             return "GET"
         }
     }
+
     object POST : HttpMethod() {
         override fun toString(): String {
             return "POST"
