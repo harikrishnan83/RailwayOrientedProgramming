@@ -13,13 +13,23 @@ plugins {
     id 'idea'
 }
 
+apply plugin: 'kotlin-kapt'
+
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
+    mavenCentral()
     jcenter()
+    maven { url "https://dl.bintray.com/arrow-kt/arrow-kt/" }
 }
 
+def arrow_version = "0.10.5"
+
 dependencies {
+    compile "io.arrow-kt:arrow-core:$arrow_version"
+    compile "io.arrow-kt:arrow-syntax:$arrow_version"
+    kapt    "io.arrow-kt:arrow-meta:$arrow_version"
+
     // Align versions of all Kotlin components
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
 
