@@ -21,5 +21,9 @@ sealed class HttpMethod {
     object POST : HttpMethod()
     object UPDATE : HttpMethod()
     object DELETE : HttpMethod()
+
+    override fun toString(): String {
+        return this.javaClass.simpleName
+    }
 }
 
