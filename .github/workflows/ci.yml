@@ -12,6 +12,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       packages: write
@@ -26,6 +27,8 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
     - name: Build with Gradle
-      run: gradle clean test
+      run: ./gradlew build
 
