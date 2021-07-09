@@ -23,7 +23,7 @@ repositories {
     maven { url "https://dl.bintray.com/arrow-kt/arrow-kt/" }
 }
 
-def arrow_version = "0.10.5"
+def arrow_version = "0.10.4"
 
 dependencies {
     compile "io.arrow-kt:arrow-core:$arrow_version"
