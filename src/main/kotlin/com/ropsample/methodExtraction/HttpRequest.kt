@@ -6,14 +6,14 @@ data class Failure(val errorMessage: String): Result()
 
 class HttpRequest(private val url: String, private val method: HttpMethod, private val body: String) {
     fun matches(anotherRequest: HttpRequest): Result {
-        when (val result = matchUrl(anotherRequest)) {
-            is Failure -> return result
+        if (matchUrl(anotherRequest) is Failure) {
+            return matchUrl(anotherRequest)
         }
-        when (val result = matchMethod(anotherRequest)) {
-            is Failure -> return result
+        if (matchMethod(anotherRequest) is Failure) {
+            return matchMethod(anotherRequest)
         }
-        when (val result = matchBody(anotherRequest)) {
-            is Failure -> return result
+        if (matchBody(anotherRequest) is Failure) {
+            return matchBody(anotherRequest)
         }
         return Success("everything matches")
     }
