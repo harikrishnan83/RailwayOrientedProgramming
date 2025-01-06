@@ -19,7 +19,7 @@ dependencies {
     implementation "io.arrow-kt:arrow-core:$arrowVersion"
     implementation "io.arrow-kt:arrow-fx-coroutines:$arrowVersion"
     
-    testImplementation "org.assertj:assertj-core:3.27.1"
+    testImplementation "org.assertj:assertj-core:3.27.2"
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     testImplementation "org.junit.jupiter:junit-jupiter-params:$junitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
