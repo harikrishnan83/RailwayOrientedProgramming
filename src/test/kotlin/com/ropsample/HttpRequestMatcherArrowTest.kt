@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 
 internal class HttpRequestMatcherArrowTest {
     @Test
-    fun `should match requests when url is the same`() {
+    fun `should match requests when url, method and body are the same`() {
         val request = HttpRequest("/resources", HttpMethod.GET, "body")
         val anotherRequest = HttpRequest("/resources", HttpMethod.GET, "body")
         request.matches(anotherRequest).let {

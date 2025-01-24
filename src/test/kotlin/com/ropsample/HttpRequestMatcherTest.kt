@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 
 internal class HttpRequestMatcherTest {
     @Test
-    fun `should match requests when url is the same`() {
+    fun `should match requests when url, method and body are the same`() {
         val request = HttpRequest("/resources", HttpMethod.GET, "body")
         val anotherRequest = HttpRequest("/resources", HttpMethod.GET, "body")
         request.matches(anotherRequest).let {
@@ -23,7 +23,7 @@ internal class HttpRequestMatcherTest {
         val anotherRequest = HttpRequest("/anotherResource", HttpMethod.GET, "body")
         request.matches(anotherRequest).let {
             assertThat(it is Failure<*>).isTrue()
-            assertThat((it as Failure<*>).errorMessage)
+            assertThat((it as Failure<*>).error)
                     .isEqualTo("URL did not match. /resources not equal to /anotherResource")
         }
     }
@@ -34,7 +34,7 @@ internal class HttpRequestMatcherTest {
         val anotherRequest = HttpRequest("/resources", HttpMethod.POST, "body")
         request.matches(anotherRequest).let {
             assertThat(it is Failure<*>).isTrue()
-            assertThat((it as Failure<*>).errorMessage)
+            assertThat((it as Failure<*>).error)
                     .isEqualTo("Method did not match. GET not equal to POST")
         }
     }
@@ -45,7 +45,7 @@ internal class HttpRequestMatcherTest {
         val anotherRequest = HttpRequest("/resources", HttpMethod.GET, "body B")
         request.matches(anotherRequest).let {
             assertThat(it is Failure<*>).isTrue()
-            assertThat((it as Failure<*>).errorMessage)
+            assertThat((it as Failure<*>).error)
                     .isEqualTo("Body did not match. GET not equal to GET")
         }
 

@@ -1,19 +1,19 @@
 package com.ropsample.railwayorientedprogramming
 
 sealed class Result<T>
-data class Success<T>(val message: T) : Result<T>()
-data class Failure<T>(val errorMessage: String) : Result<T>()
+data class Success<T>(val value: T) : Result<T>()
+data class Failure<T>(val error: String) : Result<T>()
 
 infix fun <T, U> Result<T>.then(f: (T) -> Result<U>) =
         when (this) {
-            is Success -> f(this.message)
-            is Failure -> Failure(this.errorMessage)
+            is Success -> f(this.value)
+            is Failure -> Failure(this.error)
         }
 
 infix fun <T, U> T.pipeTo(f: (T) -> Result<U>) = Success(this) then f
 
 infix fun <T> Result<T>.error(f: (String) -> Result<T>) =
-        if (this is Failure) f(this.errorMessage) else this
+        if (this is Failure) f(this.error) else this
 
 class HttpRequest(private val url: String, private val method: HttpMethod, private val body: String) {
     fun matches(anotherRequest: HttpRequest) =

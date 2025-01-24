@@ -1,8 +1,8 @@
 package com.ropsample.liningupthefunctions
 
 sealed class Result<T>
-data class Success<T>(val message: T): Result<T>()
-data class Failure<T>(val errorMessage: String): Result<T>()
+data class Success<T>(val value: T): Result<T>()
+data class Failure<T>(val error: String): Result<T>()
 
 class HttpRequest(private val url: String, private val method: HttpMethod, private val body: String) {
     fun matches(anotherRequest: HttpRequest): Result<HttpRequest> {
@@ -18,6 +18,8 @@ class HttpRequest(private val url: String, private val method: HttpMethod, priva
             }
         }
     }
+
+    // httpRequest.matchUrl(anotherHttpRequest) then matchMethod(anotherHttpRequest) then matchBody(anotherHttpRequest)
 
     private fun matchUrl(anotherRequest: HttpRequest): Result<HttpRequest> {
         if (this.url != anotherRequest.url)
