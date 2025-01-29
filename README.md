@@ -14,6 +14,11 @@ Proposal - [The Functional Fix: Kotlin Error Handling Made Elegant](https://conf
 
 Slides - https://speakerdeck.com/harikrishnan83/the-functional-fix-kotlin-error-handling-made-elegant
 
+Video
+
+
+[![The Functional Fix: Kotlin Error Handling Made Elegant](https://img.youtube.com/vi/byIcRxtk6gA/maxresdefault.jpg)](https://www.youtube.com/watch?v=byIcRxtk6gA)  
+
 ## Initial code
 
 We start with this procedural code that is mainly using if-else to handle errors.
