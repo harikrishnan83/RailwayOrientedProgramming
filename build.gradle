@@ -10,7 +10,7 @@ repositories {
 }
 
 def arrowVersion = "2.0.1"
-def junitVersion = "5.11.4"
+def junitVersion = "5.12.0"
 
 dependencies {
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
