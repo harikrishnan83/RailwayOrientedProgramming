@@ -9,7 +9,7 @@ repositories {
     mavenCentral()
 }
 
-def arrowVersion = "2.0.1"
+def arrowVersion = "2.1.0"
 def junitVersion = "5.11.4"
 
 dependencies {
