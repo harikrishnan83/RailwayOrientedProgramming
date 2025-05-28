@@ -25,14 +25,14 @@ class HttpRequest(private val url: String, private val method: HttpMethod, priva
     }
 
     private fun matchMethod(anotherRequest: HttpRequest): Result {
-        if (this.body != anotherRequest.body)
+        if (this.method != anotherRequest.method)
             return Failure("Method did not match. ${this.method} not equal to ${anotherRequest.method}")
         return Success("Method matches")
     }
 
     private fun matchBody(anotherRequest: HttpRequest): Result {
         if (this.body != anotherRequest.body)
-            return Failure("Body did not match. ${this.method} not equal to ${anotherRequest.method}")
+            return Failure("Body did not match. ${this.body} not equal to ${anotherRequest.body}")
         return Success("Body matches")
     }
 }
