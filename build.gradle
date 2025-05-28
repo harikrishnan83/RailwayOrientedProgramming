@@ -10,7 +10,7 @@ repositories {
 }
 
 def arrowVersion = "2.1.1"
-def junitVersion = "5.11.4"
+def junitVersion = "5.12.2"
 
 dependencies {
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
@@ -23,6 +23,7 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     testImplementation "org.junit.jupiter:junit-jupiter-params:$junitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher:1.12.2"
 }
 
 test {
